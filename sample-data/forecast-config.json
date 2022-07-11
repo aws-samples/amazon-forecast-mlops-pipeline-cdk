@@ -1,0 +1,76 @@
+{
+    "TimestampFormat": "yyyy-MM-dd HH:mm:ss",
+    "DatasetGroup": {
+        "DatasetGroupName":"ExampleDatatsetGroup",
+        "Domain": "CUSTOM"
+    },
+    "Dataset": {
+        "TTS": {
+            "DatasetName": "Example_target_ts",
+            "Domain": "CUSTOM",
+            "DatasetType": "TARGET_TIME_SERIES",
+            "DataFrequency": "M",
+            "Schema": {
+                "Attributes": [
+                    {
+                        "AttributeName": "timestamp", 
+                        "AttributeType": "timestamp"
+                    }, 
+                    {
+                        "AttributeName": "item_id",
+                        "AttributeType": "string"
+                    }, 
+                    {
+                        "AttributeName": "target_value",
+                        "AttributeType": "float"
+                    }
+                ]
+            }
+        },
+        "IM": {
+            "DatasetName": "Example_meta",
+            "Domain": "CUSTOM",
+            "DatasetType": "ITEM_METADATA",
+            "Schema": {
+                "Attributes": [
+                    {
+                        "AttributeName": "item_id", 
+                        "AttributeType": "string"
+                    },
+                    {
+                        "AttributeName": "Model_Type",
+                        "AttributeType": "string"
+                    }
+                ]
+            }
+        }
+    },
+    "Predictor": {
+        "AlgorithmArn": "arn:aws:forecast:::algorithm/CNN-QR",
+        "PredictorName": "ExamplePredictor",
+        "ForecastHorizon": 12,
+        "FeaturizationConfig":{
+            "ForecastFrequency":"M"
+        },
+        "PerformAutoML": false,
+        "PerformHPO": false,
+        "InputDataConfig": {
+            "SupplementaryFeatures": [{
+                "Name": "holiday",
+                "Value": "US"
+            }]
+        },
+        "TrainingParameters": {
+            "context_length": "24"
+        }
+    },
+    "Forecast": {
+        "ForecastName": "ExampleForecast",
+        "ForecastTypes":[
+            "0.10",
+            "0.50",
+            "0.90"
+        ]
+    },
+    "PerformDelete": true
+  }
