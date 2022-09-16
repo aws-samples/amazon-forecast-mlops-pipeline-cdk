@@ -46,6 +46,7 @@ export class GlueConstruct extends Construct {
             }),
             role: this.role,
             jobName: props.taskName,
+            maxCapacity: 1, 
             defaultArguments: props.defaultArguments,
         });
 
