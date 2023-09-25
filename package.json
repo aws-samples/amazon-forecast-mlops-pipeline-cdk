@@ -1,5 +1,5 @@
 {
-  "name": "forecast-mlops-pipeline",
+  "name": "@aws-samples/forecast-mlops-pipeline",
   "version": "0.1.0",
   "bin": {
     "forecast-mlops-pipeline": "bin/forecast-mlops-pipeline.js"
